@@ -1,4 +1,74 @@
-* {
-  outline: 1px dotted orange;
-  color: blue;
+
+#header {
+    z-index: 1;
+    border-radius: 5px;
+    position: fixed;
+    height:80px;
+    width:98.5%;
+    background-color: lightblue;
+    margin-top: -20px;
+}
+#name {
+    float: left;
+    margin-left: 5px;
+    margin-top:20px;
+    font-size: 16px;
+    font-family: Verdana, sans-serif;
+}
+#footer {
+  border-radius: 5px;
+  position: relative;
+  clear: both;
+  height:50px;
+  width:100%;
+  background-color:peachpuff;
+  font-size: 16px;
+  text-align: center;
+  font-family: Verdana, sans-serif;
+}
+#footer p{
+    position: relative;
+    padding-top: 10px;
+}
+.left {
+    border-radius: 5px;
+    /*float: left;*/
+    position:left;
+    height:400px;
+    width:5%;
+    background-color:orchid;
+    margin-bottom: -20px;
+    margin-top: 20px;
+}
+.right {
+	border-radius:5px;
+	float: right;
+  /*position:right;*/
+	height: 400px;
+	width: 99.5%;
+	background-color: aliceblue;
+	margin-bottom: -20px;
+  margin-top: 10px;
+}
+.right p {
+    float: left;
+    margin-top: -20px;
+    margin-bottom:5px;
+    font-family: Garamond, sans-serif;
+    font-size:18px;
+}
+h4 {
+    position:relative;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-family: Verdana, sans-serif;
+}
+.space {
+    padding: 10px;
+}
+li {
+    list-style-type: disc;
+}
+li:first-child {
+    opacity:0;
 }
