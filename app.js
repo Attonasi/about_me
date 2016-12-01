@@ -75,56 +75,57 @@ console.log('Fifth quesion: Do I speak only one language? '+'User response: '+an
 
 var guessNum = Math.floor((Math.random() * 30)+1);
 
-var guessCount = 0;
+var gotIt = false;
+var guessCount = 1;
 
 var ans6 = parseInt(prompt('Let\'s play a game, I am thinking of a number between 1 and 30. You have four chances to guess this magic number correctly.'));
 
-while (guessCount < 3 ) {
-  guessCount++;
+while (guessCount < 4 ) {
+  guessCount+=1;
   if (ans6 > guessNum) {
     ans6 = parseInt(prompt('too high, guess again.'));
   } else if (ans6 < guessNum) {
     ans6 = parseInt(prompt('too low, guess again.'));
   } else {
     alert('Awesome, you got it.');
+    gotIt = true;
     break;
   }
 } //close while
 
-if (guessCount < 4) {
+if (guessCount <= 4 && gotIt == true) {
   CorrectResponse = CorrectResponse + 1;
 } else {
+  alert('correct answer = '+guessNum);
   alert('You took more 4 tries, We\'ll move on to another question.');
 }
 
 console.log('User '+username+' took '+guessCount+' on question 6.');
+console.log('User '+username+' total correct response '+CorrectResponse);
 
-
-guessCount = 1;
+guessCount = 0;
 var gotIt = false;
 var statesILived = ['AL','CA','GA','NJ','NY','NC'];
 
 var ans7 = prompt('Let\'s come back to about-me again, I have lived in several states besides Washington. You have six chances to guess one of them. Please give response in US state abbrevations.').toUpperCase();
 
 while (guessCount < 5) {
-
+  guessCount+=1;
   for (var i = 0; i < statesILived.length; i++) {
     var check = statesILived.indexOf(ans7) > -1;
-
   if (check) {
     alert('Awesome, you got it');
     gotIt = true;
     //guessCount++;
     break; //break out for
   } else {
-    if (guessCount > 5){
+    if (guessCount > 5) {
       alert('no more guesses!');
       break;}
-    guessCount++;
     ans7 = prompt('wrong state, guess again.').toUpperCase();
   } //close else
   } //close for
-  if (gotIt == true) {break;} //break out while
+  if (gotIt) {break;} //break out while
 } //close while
 
 alert('I have lived in following states: '+statesILived);
