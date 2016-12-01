@@ -1,79 +1,144 @@
 'use strict';
 
-alert('Welcome to about_me guessing game, please reply each question with Y\/N or YES\/NO')
-
 var CorrectResponse = 0;
 
-var ans1 = prompt('Does Ophelia have any pets? ').toUpperCase();
+var username = prompt('Hi there, My name is Ophelia, what\'s your first name?');
+
+alert('Welcome to about_me guessing game, '+username+', please reply each question with Y\/N or YES\/NO')
+
+var ans1 = prompt('Do I have any pets? ').toUpperCase();
 
 if (ans1 == 'Y' || ans1 == 'YES') {
-  alert('No, Ophelia does not have any pet!');
+  alert('No, I do not have any pet!');
 
 } else if (ans1 == 'N' || ans1 == 'NO') {
-  alert('Yes, Ophelia does not have any pet.');
+  alert('Yes, I do not have any pet.');
   CorrectResponse = CorrectResponse + 1;
 } else {
   alert('Sorry, the answer must be either Y\/N or YES\/NO. We\'ll move on to another question.');
 }
 
-console.log('First question: Does Ophelia have any pets? '+'User response: '+ans1);
+console.log('First question: Do I have any pets? '+'User response: '+ans1);
 
-var ans2 = prompt('Is Ophelia a student? ').toUpperCase();
+var ans2 = prompt('Am I a student? ').toUpperCase();
 
 if (ans2 == 'Y' || ans2 == 'YES') {
-  alert('Yes, Ophelia enrolls in Dec16 Code Fellows 201!');
+  alert('Yes, I enroll in Dec16 Code Fellows 201!');
   CorrectResponse = CorrectResponse + 1;
 } else if (ans2 == 'N' || ans2 == 'NO') {
-  alert('Sorry, you\'re wrong, Ophelia enrolls in Dec16 Code Fellows 201.');
+  alert('Sorry, you\'re wrong, I enroll in Dec16 Code Fellows 201.');
 } else {
   alert('Sorry, the answer must be either Y\/N or YES\/NO. We\'ll move on to another question.');
 }
 
-console.log('Second question: Is Ophelia a student? '+'User response: '+ans2);
+console.log('Second question: Am I a student? '+'User response: '+ans2);
 
-var ans3 = prompt('Is Ophelia an outdoor person? ').toUpperCase();
+var ans3 = prompt('Am I an outdoor person? ').toUpperCase();
 
 if (ans3 == 'Y' || ans3 == 'YES') {
-  alert('Yes, Ophelia loves the outdoor!');
+  alert('Yes, I love the outdoor!');
   CorrectResponse = CorrectResponse + 1;
 } else if (ans3 == 'N' || ans3 == 'NO') {
-  alert('Sorry, you\'re wrong, Ophelia is an outdoor person.');
+  alert('Sorry, you\'re wrong, I am an outdoor person.');
 } else {
   alert('Sorry, the answer must be either Y\/N or YES\/NO. We\'ll move on to another question.');
 }
 
-console.log('Third quesion: Is Ophelia an outdoor person? '+'User response: '+ans3);
+console.log('Third quesion: Am I an outdoor person? '+'User response: '+ans3);
 
-var ans4 = prompt('Has Ophelia been out of the country? ').toUpperCase();
+var ans4 = prompt('Have I been out of the country? ').toUpperCase();
 
 if (ans4 == 'Y' || ans4 == 'YES') {
-  alert('Yes, Ophelia loves to travel!');
+  alert('Yes, I love to travel!');
   CorrectResponse = CorrectResponse + 1;
 } else if (ans4 == 'N' || ans4 == 'NO') {
-  alert('Sorry, you\'re wrong, Ophelia loves to travel.');
+  alert('Sorry, you\'re wrong, I love to travel.');
 } else {
   alert('Sorry, the answer must be either Y\/N or YES\/NO. We\'ll move on to another question.');
 }
 
-console.log('Fourth quesion: Has Ophelia been out of the country? '+'User response: '+ans4)
+console.log('Fourth quesion: Have I been out of the country? '+'User response: '+ans4)
 
-var ans5 = prompt('Does Ophelia speak only one language? ').toUpperCase();
+var ans5 = prompt('Do I speak only one language? ').toUpperCase();
 
 if (ans5 == 'Y' || ans5 == 'YES') {
-  alert('No, Ophelia is multilingual!');
+  alert('No, I am multilingual!');
 } else if (ans5 == 'N' || ans5 == 'NO') {
-  alert('Yes, you\'re right, Ophelia is multilingual.');
+  alert('Yes, you\'re right, I am multilingual.');
   CorrectResponse = CorrectResponse + 1;
 } else {
   alert('Sorry, the answer must be either Y\/N or YES\/NO. We\'ll move on to another question.');
 }
 
-console.log('Fifth quesion: Does Ophelia speak only one language? '+'User response: '+ans5);
+console.log('Fifth quesion: Do I speak only one language? '+'User response: '+ans5);
+
+
+var guessNum = Math.floor((Math.random() * 30)+1);
+
+var guessCount = 0;
+
+var ans6 = parseInt(prompt('Let\'s play a game, I am thinking of a number between 1 and 30. You have four chances to guess this magic number correctly.'));
+
+while (guessCount < 3 ) {
+  guessCount++;
+  if (ans6 > guessNum) {
+    ans6 = parseInt(prompt('too high, guess again.'));
+  } else if (ans6 < guessNum) {
+    ans6 = parseInt(prompt('too low, guess again.'));
+  } else {
+    alert('Awesome, you got it.');
+    break;
+  }
+} //close while
+
+if (guessCount < 4) {
+  CorrectResponse = CorrectResponse + 1;
+} else {
+  alert('You took more 4 tries, We\'ll move on to another question.');
+}
+
+console.log('User '+username+' took '+guessCount+' on question 6.');
+
+
+guessCount = 1;
+var gotIt = false;
+var statesILived = ['AL','CA','GA','NJ','NY','NC'];
+
+var ans7 = prompt('Let\'s come back to about-me again, I have lived in several states besides Washington. You have six chances to guess one of them. Please give response in US state abbrevations.').toUpperCase();
+
+while (guessCount < 5) {
+
+  for (var i = 0; i < statesILived.length; i++) {
+    var check = statesILived.indexOf(ans7) > -1;
+
+  if (check) {
+    alert('Awesome, you got it');
+    gotIt = true;
+    //guessCount++;
+    break; //break out for
+  } else {
+    if (guessCount > 5){
+      alert('no more guesses!');
+      break;}
+    guessCount++;
+    ans7 = prompt('wrong state, guess again.').toUpperCase();
+  } //close else
+  } //close for
+  if (gotIt == true) {break;} //break out while
+} //close while
+
+alert('I have lived in following states: '+statesILived);
+if (guessCount <= 6) {
+  CorrectResponse = CorrectResponse + 1;
+}
+
+console.log('User '+username+' took '+guessCount+' tries on question 7.');
+
 console.log(CorrectResponse);
 if (CorrectResponse >= 3) {
-  CorrectResponse = 'How do you know me so well? You answered  '+CorrectResponse+' about_me questions correctly.';
+  CorrectResponse = 'You are very astute. You answered  '+CorrectResponse+' about_me questions correctly.';
 } else {
-  CorrectResponse = 'Have we met? You only answered '+CorrectResponse+' about_me questions correctly.';
+  CorrectResponse = 'oops! You only answered '+CorrectResponse+' about_me questions correctly.';
 }
 
 document.getElementById('response').innerHTML = CorrectResponse;
